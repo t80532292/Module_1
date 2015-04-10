@@ -58,11 +58,9 @@
                 }
             };
 
-            while (true) {
-                setTimeout(function () {
-                    setDropdownHeight();
-                }, 1000);
-            };
+  //          while (true) {
+                setTimeout(function () { setDropdownHeight(); }, 1000);
+ //           };
 
             $toggle.removeClass('gbl_dropdown_active');
             $toggle.focus();
@@ -91,23 +89,22 @@
             $(document).trigger(ns + 'Open');
         }
 
+        function setStatus() {
+            var newStatus = "closed";
+        }
+
+        function getStatus() {
+            return {
+                status : "open"
+            };
+        }
+
         function toggleDropdown(e) {
             e.preventDefault();
             e.stopPropagation();
             if ($dropdown.data('status') === 'closed') {
-                function setStatus() {
-                    var newStatus;
-                    newStatus = "closed";
-                }
-
                 open();
             } else {
-                function getStatus() {
-                    return
-                    {
-                        status: "open"
-                    }
-                }
 
                 close();
             }
