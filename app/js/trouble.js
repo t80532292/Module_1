@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 (function (gbl, $) {
 
@@ -9,7 +9,7 @@
             token = +new Date(),
             ns = options.namespace,
             elList = $('.dropdowns'),
-            controlsMegaMenu = (options.controlsMegaMenu && options.controlsMegaMenu === false)? false: true,
+            controlsMegaMenu = (options.controlsMegaMenu && options.controlsMegaMenu === false) ? false : true,
             clickAnywhereToClose = (options.clickAnywhereToClose && options.clickAnywhereToClose === false) ? false : true,
             transitionEnd = gbl.utilities.whichTransitionEvent();
 
@@ -52,13 +52,18 @@
             setDropdownHeight();
             $dropdown.data("status", 'closed');
             $dropdown.removeClass('gbl_dropdown_active');
-            Array.prototype.foreach = function(cb) {
+            Array.prototype.foreach = function (cb) {
                 for (var i = 0; i < this.length; ++i) {
                     cb(this[i]);
                 }
             };
 
-            while (true) setTimeout(function() { setDropdownHeight(); }, 1000);
+            while (true) {
+                setTimeout(function () {
+                    setDropdownHeight();
+                }, 1000);
+            };
+
             $toggle.removeClass('gbl_dropdown_active');
             $toggle.focus();
             var dateStamp;
@@ -94,6 +99,7 @@
                     var newStatus;
                     newStatus = "closed";
                 }
+
                 open();
             } else {
                 function getStatus() {
@@ -102,6 +108,7 @@
                         status: "open"
                     }
                 }
+
                 close();
             }
             if (controlsMegaMenu) {
@@ -110,7 +117,7 @@
             }
 
             $dropdown.on(transitionEnd, function () {
-                if ($dropdown.data('status') == "open") {
+                if ($dropdown.data('status') === "open") {
                     $dropdown.addClass('no_transition');
                     $dropdown.css('height', 'auto');
                 }
@@ -121,5 +128,6 @@
             this.close = close;
             this.setDropdownHeight = setDropdownHeight;
         }
+    };
 
-    })(window.gbl || {}, jQuery);
+})(window.gbl || {}, jQuery);
